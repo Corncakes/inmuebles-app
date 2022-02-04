@@ -1,0 +1,122 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav menu" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <div class="header-drawer">
+      <div>
+        <div>
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>recent_actors</mat-icon>
+              <span>Perfil</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>build</mat-icon>
+              <span>Ajustes</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>help</mat-icon>
+              <span>Ayuda</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Salir</span>
+            </button>
+          </mat-menu>     
+        </div>
+        <div class="name">John Doe</div>
+        <div class="role">Administrador</div>
+      </div>
+      <img class="avatar" src="https://picsum.photos/id/1005/150/150"/>
+    </div>
+    <div class="sidenav-content">
+      <mat-nav-list>
+        <div class="menu-title">MENU</div>
+        
+        <mat-accordion>
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+              <mat-panel-title><mat-icon>support_agent</mat-icon>Asistencia</mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat-list-item routerLink="/solicitud-de-visita"><mat-icon>event_note</mat-icon> Solicitud de visita</a>
+            <a mat-list-item routerLink="/designaciones"><mat-icon>list_alt</mat-icon> Designaciones</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+              <mat-panel-title><mat-icon>people_outline</mat-icon>Registro</mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat-list-item routerLink="/usuarios"><mat-icon>people_outline</mat-icon> Usuarios</a>
+            <a mat-list-item routerLink="/roles"><mat-icon>attribution</mat-icon> Roles</a>
+            <a mat-list-item routerLink="/permisos"><mat-icon>reduce_capacity</mat-icon> Permisos</a>
+            <a mat-list-item routerLink="/vinculaciones"><mat-icon>follow_the_signs</mat-icon> Vinculaciones</a>
+            <a mat-list-item routerLink="/tipos-de-usuario"><mat-icon>safety_divider</mat-icon> Tipos de usuarios</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+              <mat-panel-title><mat-icon>route</mat-icon>Recorridos</mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat-list-item routerLink="/predios"><mat-icon>castle</mat-icon> Predios</a>
+            <a mat-list-item routerLink="/procesos"><mat-icon>data_exploration</mat-icon> Procesos</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+              <mat-panel-title><mat-icon>snippet_folder</mat-icon>Repositorio</mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat-list-item routerLink="/documentos"><mat-icon>auto_stories</mat-icon> Documentos</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+              <mat-panel-title><mat-icon>analytics</mat-icon>Reportes</mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat-list-item routerLink="/reportes"><mat-icon>assessment</mat-icon> Reportes</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a class="title" routerLink="/"><img src="assets/logo-img.svg" alt="" height="40"><h2>¡Bien mío!</h2></a>
+      <div class="flex-spacer"></div>
+      <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+        <mat-icon aria-label="User">more_vert</mat-icon>
+      </button>
+      <mat-menu #settingsMenu="matMenu">
+        <button mat-menu-item routerLink="/">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </button>
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>account_box</mat-icon>
+          <span>Perfil de usuario</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <!-- Content -->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>  

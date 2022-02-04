@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Agregar rol</h1>
+<mat-divider></mat-divider>
+<form [formGroup]="roleForm">
+  <div mat-dialog-content>
+    <div class="row between-xs">
+      <div class="col-xs-12">
+        <mat-form-field class="full-width">
+          <input matInput type="text" placeholder="Nombre" formControlName="nombre" required>
+          <mat-error *ngIf="roleForm.controls['nombre'].hasError('required')">
+            El nombre de rol es <strong>obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>  
+    </div>
+    <input type="hidden" name="action" formControlName="action">
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="roleForm.value" [disabled]="!roleForm.valid" cdkFocusInitial>{{ buttonText }}</button>
+  </div>
+</form>

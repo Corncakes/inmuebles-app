@@ -1,0 +1,86 @@
+<h1 mat-dialog-title>Agregar predio</h1>
+<mat-divider></mat-divider>
+<form [formGroup]="prediosForm">
+    <div mat-dialog-content>
+        <div class="row between-xs">
+            <div class="col-xs-6">
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Nombre del propietario" formControlName="nombrePropietario" required>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-6">
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Apellidos del propietario" formControlName="apellidosPropietario" required>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-6">
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Teléfono" formControlName="telefono" required>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-6">
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Dirección" formControlName="direccion" required>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-6">
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Latitud" formControlName="latitud" required>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-6">
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Longitud" formControlName="longitud" required>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-12">
+                <fieldset class="row mt-2 mb-1 full-width">
+                    <legend>Tipología de inmuebles</legend>
+                    <div class="mt-1 col-xs-6 col-md-4 col-lg-6">
+                        <mat-slide-toggle color="primary">Históricos Residenciales</mat-slide-toggle>
+                    </div>
+                    <div class="mt-1 col-xs-6 col-md-4 col-lg-6">
+                        <mat-slide-toggle color="primary">Históricos Especiales</mat-slide-toggle>
+                    </div>
+                    <div class="my-1 col-xs-6 col-md-4 col-lg-6">
+                        <mat-slide-toggle color="primary">Contemporáneos</mat-slide-toggle>
+                    </div>
+                </fieldset>
+                <div class="row my-1 full-width">
+                    <mat-form-field class="col-xs-6 col-md-4 col-lg-6">
+                    <mat-label>Tipos Históricos Residenciales</mat-label>
+                    <mat-select>
+                        <mat-option [value]="B">Casa Baja</mat-option>
+                        <mat-option [value]="A1">Casa Alta</mat-option>
+                        <mat-option [value]="A2">Casa de Dos Altos</mat-option>
+                        <mat-option [value]="A3">Casa Alta por sobre elevación</mat-option>
+                        <mat-option [value]="Es">Casa Alta con Entresuelo</mat-option>
+                        <mat-option [value]="Ac">Accesoria</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col-xs-6 col-md-4 col-lg-6">
+                    <mat-label>Tipos Históricos Especiales</mat-label>
+                    <mat-select>
+                        <mat-option [value]="Er">Edificios Especiales Religiosos</mat-option>
+                        <mat-option [value]="Ec">Edificios Especiales Civiles</mat-option>
+                        <mat-option [value]="Em">Edificios Especiales Militares</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col-xs-6 col-md-4 col-lg-6">
+                    <mat-label>Tipos Contemporáneos</mat-label>
+                    <mat-select>
+                        <mat-option [value]="R">Edificios Residenciales</mat-option>
+                        <mat-option [value]="C">Edificios Comerciales</mat-option>
+                        <mat-option [value]="E">Edificios Especiales</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>  
+        </div>
+        <input type="hidden" name="action" formControlName="action">
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+        <button mat-button [mat-dialog-close]="prediosForm.value" [disabled]="!prediosForm.valid" cdkFocusInitial>{{ buttonText }}</button>
+    </div>
+</form>
